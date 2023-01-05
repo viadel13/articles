@@ -8,6 +8,7 @@ const App = () =>{
 
   const{register, handleSubmit, watch, formState: { errors } } = useForm()
   const[login, setLogin] = useState(true)
+  const[load, setLoad] = useState(null)
   const userName = watch("userName")
   const pass = watch("password")
 
@@ -18,16 +19,17 @@ const App = () =>{
         {
           login ? 
           
-              <Login
-                register={register}
-                handleSubmit={handleSubmit}
-                errors = {errors}
-                userName={userName}
-                pass={pass}
-                setLogin={setLogin}
-              />
-          
-            
+            <Login
+              register={register}
+              handleSubmit={handleSubmit}
+              errors = {errors}
+              userName={userName}
+              pass={pass}
+              setLoad={setLoad}
+              load={load}
+              setLogin={setLogin}
+            />
+      
           : 
           <Articles />
         }

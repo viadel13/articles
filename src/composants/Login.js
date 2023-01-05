@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import loader from '../images/loader.svg'
 
-const Login = ({register, handleSubmit, errors, userName, pass, setLogin}) =>{
+const Login = ({register, handleSubmit, errors, userName, pass, load, setLoad, setLogin}) =>{
     
     const[erorName, setErorName] = useState(true)
     const[erorPass, setErorPass] = useState(true)
+  
 
     const onSubmit = (data)=>{
         
@@ -22,8 +24,15 @@ const Login = ({register, handleSubmit, errors, userName, pass, setLogin}) =>{
         else{
             setErorName(true)
             setErorPass(true)
-            setLogin(false)
+            setLoad(true)
+            setInterval(()=>{
+                setLoad(false)
+                setLogin(false)  
+            }, 6000)
+       
         }
+
+   
  
     }
 
@@ -67,7 +76,15 @@ const Login = ({register, handleSubmit, errors, userName, pass, setLogin}) =>{
                                     />
                                     <span className="forgot p-3">Forgot Password?</span>
                                 </div>
-                                <button className="btn signin">Login</button>
+                                {load === true ? (
+                                        <>
+                                        <img src={loader} alt='loader' width={65} className='mb-4'/><br />
+                                        <i>Veuillez patienter ...</i>
+                                        </>
+                                    ) 
+                                    : <></>
+                                }
+                                <button className="btn signin mt-4">Login</button>
                             </form>
                         </div>
                     </div>
