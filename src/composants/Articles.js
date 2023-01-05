@@ -1,4 +1,4 @@
-const Article = () =>{
+const Articles = () =>{
     return(
         <>
             <p>Bienvenu dans la session Article</p>
@@ -6,4 +6,4 @@ const Article = () =>{
     )
 }
 
-export default Article;
+export default Articles;
