@@ -12,11 +12,12 @@ const App = () =>{
   const pass = watch("password")
 
   return(
-    <div className='container'>
-      <div className="row">
+
+      <>
+
         {
           login ? 
-            <div className='col-12 md-12'>
+          
               <Login
                 register={register}
                 handleSubmit={handleSubmit}
@@ -25,13 +26,13 @@ const App = () =>{
                 pass={pass}
                 setLogin={setLogin}
               />
-            </div>
+          
             
           : 
           <Articles />
         }
-      </div>
-    </div>
+      </>
+
  
   )
 }

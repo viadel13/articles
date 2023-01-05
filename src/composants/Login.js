@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import article from '../images/article.svg'
 
 const Login = ({register, handleSubmit, errors, userName, pass, setLogin}) =>{
     
@@ -12,10 +11,12 @@ const Login = ({register, handleSubmit, errors, userName, pass, setLogin}) =>{
 
         if(userName !== 'delvia'){
             setErorName(false)
+            setErorPass(true)
    
         }
         else if( pass !== 'delvia13'){
             setErorPass(false)
+            setErorName(true)
         }
 
         else{
@@ -28,42 +29,49 @@ const Login = ({register, handleSubmit, errors, userName, pass, setLogin}) =>{
 
     return(
 
-        <div className="wrapper">
-            <div className="logo">
-                <img src={article} alt="article" />
-            </div>
-            <div className="text-center mt-4 name">
-                Dv-Article
-            </div>
-            <form className="p-3 mt-3" onSubmit={handleSubmit(onSubmit)}>
-            <p>{erorName ? null : ('user incorect !')}</p>
-                <div className="form-field d-flex align-items-center">
-       
-                    <input 
-                        type="text"  
-                        id="userName" 
-                        placeholder="Username" 
-                        {...register("userName")}  
-                        required
-                    />
+        <div className="form-bg vh-100">
+            <div className="container login">
+                <div className="row login2">
+                    <div className="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+                        <div className="form-container">
+                            <h3 className="title">My Account</h3>
+                            <form className="form-horizontal" onSubmit={handleSubmit(onSubmit)}>
+                                <div className="form-icon">
+                                    <i className="bi bi-person-circle"></i>
+                                </div>
+                                <p>{erorName ? null : <i className="bi bi-exclamation-triangle" style={{color:'red'}}> user incorrect</i>}</p>
+                                <div className="form-group">
+                                    <span className="input-icon"><i className="bi bi-person-fill" style={{color:'black'}}></i></span>
+                                    <input 
+                                        type="text" 
+                                        className="form-control" 
+                                        placeholder="userName" 
+                                        autoComplete='none'
+                                        required
+                                        {...register('userName')}
+                                    />
+                                </div>
+                                <p>
+                                    
+                                    {erorPass ? null : <i className="bi bi-exclamation-triangle" style={{color:'red'}}> Mot de passe incorrect</i>}
+                                </p>
+                                <div className="form-group">
+                                    <span className="input-icon"><i className="bi bi-lock-fill" style={{color:'black'}}></i></span>
+                                    <input 
+                                        type="password" 
+                                        className="form-control" 
+                                        placeholder="Password" 
+                                        autoComplete='none'
+                                        required
+                                        {...register('password')}
+                                    />
+                                    <span className="forgot p-3">Forgot Password?</span>
+                                </div>
+                                <button className="btn signin">Login</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <p>{erorPass ? null : ('Mot de passe incorrect')}</p>
-                <div className="form-field d-flex align-items-center">
-                    <span className="fas fa-key"></span>
-                    <input 
-                        type="password" 
-                        id="pwd" 
-                        placeholder="Password" 
-                        autoComplete='none' 
-                        {...register("password")}
-                        required 
-
-                    />
-                </div>
-                <button className="btn mt-3">Login</button>
-            </form>
-            <div className="text-center fs-6">
-                {/* <a href="#">Forget password?</a> or <a href="#">Sign up</a> */}
             </div>
         </div>
     )
