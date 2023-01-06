@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import loader from '../images/loader.svg'
 
-const Login = ({register, handleSubmit, userName, pass, load, setLoad, setLogin}) =>{
+const Login = ({register, handleSubmit, userName, pass, load, setLoad}) =>{
     
     const[erorName, setErorName] = useState(true)
     const[erorPass, setErorPass] = useState(true)
@@ -30,11 +30,11 @@ const Login = ({register, handleSubmit, userName, pass, load, setLoad, setLogin}
 
             setInterval(()=>{
                 setLoad(false)
-                setLogin(false)  
+                localStorage.setItem("userName", "delvia")
+                localStorage.setItem("password", "delvia13")
             }, 6000)
 
-            localStorage.setItem("userName", "delvia")
-            localStorage.setItem("password", "delvia13")
+
 
         }
 
