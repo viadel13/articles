@@ -5,7 +5,7 @@ const Login = ({register, handleSubmit, userName, pass, load, setLoad, setLogin}
     
     const[erorName, setErorName] = useState(true)
     const[erorPass, setErorPass] = useState(true)
- 
+
   
 
     const onSubmit = (data)=>{
@@ -23,6 +23,7 @@ const Login = ({register, handleSubmit, userName, pass, load, setLoad, setLogin}
         }
 
         else{
+
             setErorName(true)
             setErorPass(true)
             setLoad(true)
@@ -31,7 +32,10 @@ const Login = ({register, handleSubmit, userName, pass, load, setLoad, setLogin}
                 setLoad(false)
                 setLogin(false)  
             }, 6000)
-       
+
+            localStorage.setItem("userName", "delvia")
+            localStorage.setItem("password", "delvia13")
+
         }
 
    

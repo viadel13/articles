@@ -9,6 +9,8 @@ const App = () =>{
   const{register, handleSubmit, watch, formState: { errors } } = useForm()
   const[login, setLogin] = useState(true)
   const[load, setLoad] = useState(null)
+  const getUserName = localStorage.getItem("userName")
+  const getPassword = localStorage.getItem("password")
   const userName = watch("userName")
   const pass = watch("password")
 
@@ -17,7 +19,9 @@ const App = () =>{
       <>
 
         {
-          login ? 
+          getUserName&&getPassword ? 
+          <Articles />
+          :
           
             <Login
               register={register}
@@ -29,9 +33,10 @@ const App = () =>{
               load={load}
               setLogin={setLogin}
             />
-      
-          : 
-          <Articles />
+                
+          
+          
+   
         }
       </>
 
