@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import loader from '../images/loader.svg'
 
-const Login = ({register, handleSubmit, errors, userName, pass, load, setLoad, setLogin}) =>{
+const Login = ({register, handleSubmit, userName, pass, load, setLoad, setLogin}) =>{
     
     const[erorName, setErorName] = useState(true)
     const[erorPass, setErorPass] = useState(true)
+ 
   
 
     const onSubmit = (data)=>{
@@ -25,6 +26,7 @@ const Login = ({register, handleSubmit, errors, userName, pass, load, setLoad, s
             setErorName(true)
             setErorPass(true)
             setLoad(true)
+
             setInterval(()=>{
                 setLoad(false)
                 setLogin(false)  

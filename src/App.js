@@ -22,7 +22,7 @@ const App = () =>{
             <Login
               register={register}
               handleSubmit={handleSubmit}
-              errors = {errors}
+              errors = {errors} 
               userName={userName}
               pass={pass}
               setLoad={setLoad}
