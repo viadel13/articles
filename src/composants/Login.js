@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import loader from '../images/loader.svg'
 
-const Login = ({register, handleSubmit, userName, pass}) =>{
+const Login = ({register, handleSubmit, errors, userName, pass}) =>{
     
     const[erorName, setErorName] = useState(true)
     const[erorPass, setErorPass] = useState(true)
@@ -86,9 +86,11 @@ const Login = ({register, handleSubmit, userName, pass}) =>{
                                         placeholder="userName" 
                                         autoComplete='none'
                                         required
-                                        {...register('userName')}
+                                        {...register('userName',{ pattern: /^[A-Za-z]+$/i })}
+                                    
                                     />
                                 </div>
+                                {errors.userName && <span>caractere non valide</span> }
                                 <p>
                                     
                                     {erorPass ? null : <i className="bi bi-exclamation-triangle" style={{color:'red'}}> Mot de passe incorrect</i>}
