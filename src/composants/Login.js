@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import loader from '../images/loader.svg'
 
-const Login = ({register, handleSubmit, userName, pass, load, setLoad}) =>{
+const Login = ({register, handleSubmit, userName, pass}) =>{
     
     const[erorName, setErorName] = useState(true)
     const[erorPass, setErorPass] = useState(true)
-
+    const[load, setLoad] = useState(null)
+    const[com, setCom] = useState(0)
+    const[use, setUse] = useState(null)
   
 
     const onSubmit = (data)=>{
@@ -27,20 +29,41 @@ const Login = ({register, handleSubmit, userName, pass, load, setLoad}) =>{
             setErorName(true)
             setErorPass(true)
             setLoad(true)
-
-            setInterval(()=>{
-                setLoad(false)
-                localStorage.setItem("userName", "delvia")
-                localStorage.setItem("password", "delvia13")
-            }, 6000)
-
-
-
+            setUse(true)
+              
         }
-
-   
- 
+           
     }
+    
+    // useEffect(()=>{
+           
+    //     if(load === false){
+    //         localStorage.setItem("userName", "delvia")
+    //         localStorage.setItem("password", "delvia13")
+    //     }
+    // },[load])
+
+    useEffect(()=>{
+        const interval =setInterval(() => {
+               
+        if(use){
+            if(com < 6){
+                setCom(prevState=>prevState+1)
+            }
+            else{
+             setLoad(false)
+             localStorage.setItem("userName", "delvia")
+             localStorage.setItem("password", "delvia13")
+             window.location.reload()
+            }
+        }
+                
+        }, 800);
+
+        return () => clearInterval(interval)
+
+    }, [com, use])
+
 
     return(
 

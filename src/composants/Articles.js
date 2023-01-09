@@ -1,33 +1,49 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom"
+import UserContext from "./UserContext";
 import Accueil from "./Accueil"
 import Ecrire from "./Ecrire"
 
 const Articles = () =>{
+
+    const[show, setShow] = useState(null)
+    const[comp, setComp] = useState(0)
+   
     
-    const[compteur ,setCompteur] = useState(0)
-    console.log(compteur)
+    const handleClick = () =>{
+        localStorage.clear()
+        setShow(true)
+    }
+
     useEffect(()=>{
-    const interval = setInterval(()=>{
 
-        if(compteur < 800){
-            setCompteur(prevState=>prevState+1)
-        }
-        else{
-            localStorage.clear()
-        }
+        const interval =  setInterval(() => {
+            
+            if(show){
+                if(comp > 0){
+                    setComp(prevState => prevState - 1)
+                }
 
-    }, 1000)
+                else{
+                    window.location.reload()
+                }
+            }
+          
 
-    return () => clearInterval(interval)
+        }, 1000);
 
-    }, [compteur])
+        return () => clearInterval(interval)
+        
+    })
+  
     
     return(
         <>
             <Switch>
                 <Route exact path="/">
-                    <Accueil />
+                    <UserContext.Provider value={handleClick}>
+                        <Accueil />
+                    </UserContext.Provider>
                 </Route>
                 <Route path="/Ecrire">
                     <Ecrire />

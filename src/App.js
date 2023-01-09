@@ -7,8 +7,7 @@ import Articles from "./composants/Articles"
 const App = () =>{
 
   const{register, handleSubmit, watch, formState: { errors } } = useForm()
-  // const[login, setLogin] = useState(true)
-  const[load, setLoad] = useState(null)
+  const[login, setLogin] = useState(null)
   const getUserName = localStorage.getItem("userName")
   const getPassword = localStorage.getItem("password")
   const userName = watch("userName")
@@ -19,7 +18,7 @@ const App = () =>{
       <>
 
         {
-          getUserName&&getPassword ? 
+          getUserName&&getPassword ?
           
           <Articles />
           :
@@ -30,9 +29,8 @@ const App = () =>{
               errors = {errors} 
               userName={userName}
               pass={pass}
-              setLoad={setLoad}
-              load={load}
-              // setLogin={setLogin}
+              setLogin={setLogin}
+              login={login}
             />
                 
    
