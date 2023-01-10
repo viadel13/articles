@@ -1,13 +1,24 @@
-import React from 'react'
+import {useForm} from 'react-hook-form'
+import { useState } from 'react'
 import Navbar from './Navbar'
 import '../css/ecrire.css'
 
 
 function Ecrire() {
+
+    const{register, handleSubmit, watch } = useForm()
+    const[file, setFile] = useState('')
+    console.log(`file vaut : ${file}`)
+
+    const onSubmit = (data)=>{
+        console.log(data)
+        const file = data.image[0].name;
+        setFile(file)
+    }   
+
     return (
         <>
             <Navbar />
-
             <div className='container-fluid carte'>
                 <div className="page-wrapper font-robo">
                     <div className="wrapper wrapper--w680">
@@ -17,34 +28,52 @@ function Ecrire() {
                             
                             <div className="card-body">
                                 <h2 className="title text-center">Articles Info</h2>
-                                <form className="row form g-3">
+                                <form className="row form g-3" onSubmit={handleSubmit(onSubmit)}>
                                     <div className="col-12 col-md-12 mb-4">
                                         <div className='inp'>
-                                            <input className='mb-2 input' type="text" placeholder='AUTEUR'/>
+                                            <input 
+                                                className='mb-2 input' 
+                                                type="text" 
+                                                placeholder='AUTEUR'
+                                                {...register('auteur')}
+                                                required
+                                            />
                                         </div>
                                     </div>
                                     <div className="col-12 col-md-12 mb-4">
                                         <div className='inp'>
-                                            <input className='mb-2 input' type="text" placeholder='TITRE'/>
+                                            <input 
+                                                className='mb-2 input' 
+                                                type="text" 
+                                                placeholder='TITRE'
+                                                {...register('titre')}
+                                                required
+                                            />
                                         </div>
                                     </div>
                                     <div className="col-12 col-md-12 mb-4">
-                                        <div classNmae="input-group mb-3">
-
-                                            <label className='mb-2'>choisir une image</label>
-                                            <input type="file" className="form-control"/>
-                                            
-                                        </div>
+                                        <label className='mb-2'>choisir une image</label>
+                                        <input type="file" 
+                                            className="form-control"
+                                            {...register('image')}
+                                        />    
                                     </div>
                                     <div className='col-12 col-md-12'>
                                         <div className="mb-3">
-                                            <label for="exampleFormControlTextarea1" class="form-label">Rediger l'article...</label>
-                                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <label className="form-label">Rediger l'article...</label>
+                                            <textarea 
+                                                className="form-control" 
+                                                rows="3"
+                                                {...register('textArticle')}    
+                                                required
+                                            >
+                                            </textarea>
                                         </div>
                                     </div>
                                     <div className="col-12">
                                         <button className="btn btn-primary">Poster</button>
                                     </div>
+                                    <img src={file} alt='' />
                                 </form>
                             </div>
                         </div>
