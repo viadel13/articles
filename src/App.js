@@ -25,7 +25,7 @@ const App = () =>{
           
             <Login
               register={register}
-              handleSubmit={handleSubmit}
+              handleSubmit={handleSubmit} 
               errors = {errors} 
               userName={userName}
               pass={pass}

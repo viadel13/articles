@@ -83,7 +83,7 @@ const Login = ({register, handleSubmit, errors, userName, pass}) =>{
                                     <input 
                                         type="text" 
                                         className="form-control" 
-                                        placeholder="userName" 
+                                        placeholder="user name" 
                                         autoComplete='none'
                                         required
                                         {...register('userName',{ pattern: /^[A-Za-z]+$/i })}
