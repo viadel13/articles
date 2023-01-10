@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './Navbar'
 import '../css/ecrire.css'
-import articl from '../images/articl.jpg'
+
 
 function Ecrire() {
     return (
@@ -9,29 +9,41 @@ function Ecrire() {
             <Navbar />
 
             <div className='container-fluid carte'>
-                <div className="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+                <div className="page-wrapper font-robo">
                     <div className="wrapper wrapper--w680">
                         <div className="card card-1">
                             
-                            <img src={articl} alt='artcl' height={250} className='card-img-top' />
+                            <img src='https://images.unsplash.com/photo-1506957833838-96c1e88d394f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8d3JpdGUlMjBhcnRpY2xlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' alt='artcl' height={250} className='card-img-top' />
                             
                             <div className="card-body">
-                                <h2 className="title text-center">Registration Info</h2>
-                                <form className="row g-3">
+                                <h2 className="title text-center">Articles Info</h2>
+                                <form className="row form g-3">
                                     <div className="col-12 col-md-12 mb-4">
                                         <div className='inp'>
-                                            <input className='mb-2' type="text" id="validationCustom01" placeholder='AUTEUR'/>
+                                            <input className='mb-2 input' type="text" placeholder='AUTEUR'/>
                                         </div>
                                     </div>
-                                    <div className="col-6 col-md-6">
+                                    <div className="col-12 col-md-12 mb-4">
                                         <div className='inp'>
-                                            <input className='mb-2' type="date" id="validationCustom01" placeholder='j'/>
+                                            <input className='mb-2 input' type="text" placeholder='TITRE'/>
                                         </div>
                                     </div>
-                                    <div className="col-6 col-md-6">
-                                        <div className='inp'>
-                                            <input className='mb-2' type="date" id="validationCustom01" placeholder='j'/>
+                                    <div className="col-12 col-md-12 mb-4">
+                                        <div classNmae="input-group mb-3">
+
+                                            <label className='mb-2'>choisir une image</label>
+                                            <input type="file" className="form-control"/>
+                                            
                                         </div>
+                                    </div>
+                                    <div className='col-12 col-md-12'>
+                                        <div className="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Rediger l'article...</label>
+                                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <div className="col-12">
+                                        <button className="btn btn-primary">Poster</button>
                                     </div>
                                 </form>
                             </div>
