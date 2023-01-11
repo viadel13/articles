@@ -1,19 +1,23 @@
-import {useForm} from 'react-hook-form'
-import { useState } from 'react'
+// import { useState } from 'react'
 import Navbar from './Navbar'
 import '../css/ecrire.css'
 
 
-function Ecrire() {
+function Ecrire({register, handleSubmit, watch, setArticles, articles}) {
 
-    const{register, handleSubmit, watch } = useForm()
-    const[file, setFile] = useState('')
-    console.log(`file vaut : ${file}`)
+    // const[file, setFile] = useState('')
+    // console.log(`file vaut : ${file}`)
 
     const onSubmit = (data)=>{
         console.log(data)
-        const file = data.image[0].name;
-        setFile(file)
+        const titre = watch('titre')
+        const auteur = watch('auteur')
+        console.log(titre)
+        setArticles(
+            [...articles, {titre : titre, auteur : auteur}]
+        )
+        // const file = data.image[0].name;
+        // setFile(file)
     }   
 
     return (
@@ -73,7 +77,6 @@ function Ecrire() {
                                     <div className="col-12">
                                         <button className="btn btn-primary">Poster</button>
                                     </div>
-                                    <img src={file} alt='' />
                                 </form>
                             </div>
                         </div>
