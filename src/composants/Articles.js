@@ -40,7 +40,7 @@ const Articles = () =>{
   
     
     return(
-        <div className="">
+      
             <Switch>
                 <Route exact path="/">
                     <UserContext.Provider value={handleClick}>
@@ -61,7 +61,7 @@ const Articles = () =>{
                     </UserContext.Provider>
                 </Route>
             </Switch>
-        </div>
+        
     )
 }
 
