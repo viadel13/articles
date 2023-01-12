@@ -10,8 +10,8 @@ const Articles = () =>{
     const{register, handleSubmit, watch } = useForm()
     const[show, setShow] = useState(null)
     const[comp, setComp] = useState(0)
-    const[articles, setArticles] = useState([{titre : 'dfd', auteur : 'kjk'}])
-    console.log(articles)
+    const[articles, setArticles] = useState([])
+
     const handleClick = () =>{
         localStorage.clear()
         setShow(true)

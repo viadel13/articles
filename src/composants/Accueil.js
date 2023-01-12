@@ -1,10 +1,12 @@
-// import { useEffect, useState } from "react";
+// import { useState } from "react";
 import Header from "./Header"
 import Navbar from "./Navbar"
 import { Link } from "react-router-dom"
 
 function Accueil({articles}) {
+
  
+  
   return (
     <>
       <Navbar/>
@@ -13,12 +15,12 @@ function Accueil({articles}) {
         <div className="container">
           <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             {
-              articles.map((i)=>{
+              articles.map((i, index)=>{
                 return (
-                  <div className="col mb-5">
+                  <div key={index} className="col mb-5">
                     <div className="card h-100">
                             
-                      <img className="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                      <img className="card-img-top" src={i.image} alt='' />
                             
                       <div className="card-body p-4">
                         <div className="text-center">       

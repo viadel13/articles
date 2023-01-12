@@ -1,23 +1,26 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 import Navbar from './Navbar'
 import '../css/ecrire.css'
 
 
 function Ecrire({register, handleSubmit, watch, setArticles, articles}) {
 
-    // const[file, setFile] = useState('')
-    // console.log(`file vaut : ${file}`)
+    const[upImage, setUpImage] = useState()
+    
+
+    const imageChange = (e) =>{
+        if(e.target.files && e.target.files.length > 0){
+            setUpImage(e.target.files[0])
+        }
+    }
 
     const onSubmit = (data)=>{
-        console.log(data)
+
         const titre = watch('titre')
         const auteur = watch('auteur')
-        console.log(titre)
         setArticles(
-            [...articles, {titre : titre, auteur : auteur}]
+            [...articles, {titre : titre, auteur : auteur, image : URL.createObjectURL(upImage)}]
         )
-        // const file = data.image[0].name;
-        // setFile(file)
     }   
 
     return (
@@ -59,7 +62,8 @@ function Ecrire({register, handleSubmit, watch, setArticles, articles}) {
                                         <label className='mb-2'>choisir une image</label>
                                         <input type="file" 
                                             className="form-control"
-                                            {...register('image')}
+                                            onChange={imageChange}
+                                            accept="image/png, image/jpeg"
                                         />    
                                     </div>
                                     <div className='col-12 col-md-12'>
