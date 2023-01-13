@@ -120,7 +120,7 @@ function Ecrire({register, handleSubmit, watch, setArticles, articles}) {
                 {
                 
                     load ?(
-                        <div className='load d-flex justify-content-center align-items-center'>
+                        <div className='load d-flex justify-content-center align-items-center u--fadeInDown'>
                             <div>
                                 <img src={loader2} alt='' />
                                 <p style={{color:'white'}} className='text-center'>Article en cours de creation</p>
